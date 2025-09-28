@@ -1,524 +1,284 @@
 import java.util.Scanner;
 
 public class Main {
-    //Задания из первой главы (методы)(1-5)
-    public static double fraction(double x) {//Задание 1
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите x: ");
-        double number = scanner.nextDouble();
-        double result = number - (int) number;//от числа с дробной частью вычитаем целую часть числа
-        System.out.println("Дробная часть х: " + result);
-        return result;    }
-
-    public static int charToNum(){//Задание 2
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите символ цифры (0-9)h: ");
-        char inputChar = scanner.next().charAt(0);
-
-        // Проверка на правильный ввод
-        if (inputChar < '0' || inputChar > '9') {
-            System.out.println("Ошибка: введен не цифровой символ!");
-            return -1;
-        }
-
-        int result = inputChar - '0';//Вычитаем из кода введенного символа код символа'0'
-        System.out.println("Символ '" + inputChar + "' преобразован в число: " + result);
-
-        return result;
-    }
-
-    public static boolean is2Digits() {//Задание 3
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите двузначное число: ");
-        int number = scanner.nextInt();
-        boolean result = number >= 10 && number <= 99;
-        System.out.println("Результат: " + result);
-        return result;
-    }
-
-    public static boolean isInRange() {//Задание 4
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите нижнюю границу диапазона: ");
-        int a = scanner.nextInt();
-        System.out.println("Введите верхнюю границу диапозона: ");
-        int b = scanner.nextInt();
-        System.out.println("Введите число в диапазоне: ");
-        int num = scanner.nextInt();
-        if (a < b){
-            boolean result = num >= a && num <= b;
-            System.out.println("Результат: " + result);
-            return result;}
-        else {
-            System.out.println("Неправильно введены границы диапазона!");
-            return false;}
-    }
-
-    public static boolean isEqua(){//Задание 5
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Равные числа. Введите первое число: ");
-        int a = scanner.nextInt();
-        System.out.println("Введите второе число: ");
-        int b = scanner.nextInt();
-        System.out.println("Введите третье число: ");
-        int c = scanner.nextInt();
-        boolean result = a == b && b == c;
-        System.out.println("Результат: " + result);
-        return result;
-    }
-
-    //Задания из второй главы (условия)(6-10)
-    public static int abs(){//Задание 6
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(вывод положительного): ");
-        int x = scanner.nextInt();
-        if (x < 0){
-            int result = -x;
-            System.out.println("Модуль числа: " + result);
-        }
-        else{
-            int result = x;
-            System.out.println("Модуль числа: " + result);
-        }
-        return 1;
-    }
-
-    public static boolean is35(){//Задание 7
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(деление нацело на 3 и 5): ");
-        int x = scanner.nextInt();
-        boolean div3 = x % 3 == 0;
-        boolean div5 = x % 5 == 0;
-        boolean result = (div3 || div5) && !(div3 && div5);
-        System.out.println("Результ: " + result);
-        return result;
-    }
-
-    public static int max3(){//Задание 8
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите первое число из  трех(поиск максимального): ");
-        int x = scanner.nextInt();
-        System.out.println("Введите торое число: ");
-        int y = scanner.nextInt();
-        System.out.println("Введите третье число: ");
-        int z = scanner.nextInt();
-        int max = x;
-        if (y > max) max = y;
-        if (z > max) max =z;
-        System.out.println("Максимальное число: " + max);
-        return max;
-    }
-
-    public static int sum2(){//Задание 9
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(сумма двух чисел((10>=x<=20)==20): ");
-        int x = scanner.nextInt();
-        System.out.println("Введите второе число: ");
-        int y = scanner.nextInt();
-        int sum = x + y;
-        if (sum >= 10 && sum <= 19) sum = 20;
-        System.out.println("Сумма чисел: " + sum);
-        return sum;
-    }
-
-    public static String day() {//Задание 10
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число от 1 до 7(дни недели): ");
-        int x = scanner.nextInt();
-        String result;
-        switch (x) {
-            case 1: result = "понедельник";
-                System.out.println("Результат: " + result);
-                break;
-            case 2: result = "вторник";
-                System.out.println("Результат: " + result);
-                break;
-            case 3: result = "среда";
-                System.out.println("Результат: " + result);
-                break;
-            case 4: result = "четверг";
-                System.out.println("Результат: " + result);
-                break;
-            case 5: result = "пятница";
-                System.out.println("Результат: " + result);
-                break;
-            case 6: result = "суббота";
-                System.out.println("Результат: " + result);
-                break;
-            case 7: result = "воскресенье";
-                System.out.println("Результат: " + result);
-                break;
-            default: result = "это не день недели";
-        }
-        return result;
-    }
-
-    //Задания из третьей главы(циклы)(11-15)
-    public static String listNums() {//Задание 11
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(вывод от 0 до х): ");
-        int x = scanner.nextInt();
-        if (x <= 0){
-            System.out.println("Ошибка, число не должно быть отрицательным: ");
-            return "-1";
-        }
-        String result = "";
-        for (int i = 0; i <= x; i++) {
-            result += i;
-            if (i < x) {
-                result += " ";
-            }
-        }
-        System.out.println("Результат: " + result);
-        return result;
-    }
-
-    public static String chet(){//Задание 12
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(вывод от 0 до х только четных): ");
-        int x = scanner.nextInt();
-        if (x <= 0){
-            System.out.println("Ошибка, число не должно быть отрицательным: ");
-            return "-1";
-        }
-        String result = "";
-        for (int i = 0; i <= x; i+=2) {
-            result += i;
-            if (i + 2 <= x) {
-                result += " ";
-            }
-        }
-        System.out.println("Результат: " + result);
-        return result;
-    }
-
-    public static int numLen() {//Задание 13
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(вывод количества знаков в числе): ");
-        long x = scanner.nextInt();
-        if (x <= 0){
-            System.out.println("Ошибка, число должно быть положительным");
-            return -1;
-        }
-        int length = 0;
-        while (x > 0) {
-            x /= 10;
-            length++;
-        }
-        System.out.println("Результат: " + length);
-
-        return length;
-    }
-
-    public static void square() {//Задание 14
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(построение квадрата x*x): ");
-        int x = scanner.nextInt();
-        if (x <= 0){
-            System.out.println("Ошибка, число должно быть положительным");
-            return;
-        }
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < x; j++) {
-                System.out.print('*');
-            }
-            System.out.println();
-        }
-    }
-
-    public static void rightTriangle() {//Задание 15
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число(построение правого треугольника): ");
-        int x = scanner.nextInt();
-        if (x <= 0){
-            System.out.println("Ошибка, число должно быть положительным");
-            return;
-        }
-        for (int i = 1; i <= x; i++) {
-            // Печатаем пробелы
-            for (int j = 0; j < x - i; j++) {
-                System.out.print(" ");
-            }
-            // Печатаем звездочки
-            for (int j = 0; j < i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-
-    //Задания из четвертой главы (массивы)(16-20)
-    public static int findFirst() {
-        Scanner scanner = new Scanner(System.in);
-        // Ввод размера массива
-        System.out.print("Введите размер массива: ");
-        int size = scanner.nextInt();
-        if (size <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return -1;
-        }
-        // Создание массива
-        int[] arr = new int[size];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr[i] = scanner.nextInt();
-        }
-        // Ввод искомого числа
-        System.out.print("Введите число для поиска: ");
-        int x = scanner.nextInt();
-        // Поиск первого вхождения
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-                System.out.println("Индекс первого вхождения: " + i);
-                return i;
-            }
-        }
-        System.out.println("Число не найдено в массиве");
-        return -1;
-    }
-
-    public static int maxAbs(){//Задание 17
-        Scanner scanner = new Scanner(System.in);
-        // Ввод размера массива
-        System.out.print("Введите размер массива: ");
-        int size = scanner.nextInt();
-        if (size <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return -1;
-        }
-        // Создание массива
-        int[] arr = new int[size];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr[i] = scanner.nextInt();
-        }
-        int maxAbsValue = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            // Вычисляем модуль текущего элемента
-            int currentAbs = arr[i];
-            if (currentAbs < 0) {
-                currentAbs = -currentAbs;
-            }
-            // Вычисляем модуль текущего максимума
-            int maxAbs = maxAbsValue;
-            if (maxAbs < 0) {
-                maxAbs = -maxAbs;
-            }
-            // Сравниваем модули
-            if (currentAbs > maxAbs) {
-                maxAbsValue = arr[i];
-            }
-        }
-        System.out.println("Максимальное значение по модулю: " + maxAbsValue);
-        return maxAbsValue;
-    }
-
-    public static int[] add(){//Задание 18
-        Scanner scanner = new Scanner(System.in);
-        // Ввод размера массива
-        System.out.print("Введите размер первого массива: ");
-        int size = scanner.nextInt();
-        if (size <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return new int[]{-1};
-        }
-        // Создание двух начальных массивов
-        int[] arr = new int[size];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr[i] = scanner.nextInt();
-        }
-        System.out.print("Введите размер второго массива: ");
-        int size2 = scanner.nextInt();
-        if (size2 <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return new int[]{-1};
-        }
-        int[] arr2 = new int[size2];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size2; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr2[i] = scanner.nextInt();
-        }
-        // Ввод места вставки
-        System.out.println("Введите индекс с которого второй массив вставят в первый");
-        int pos = scanner.nextInt();
-        int[] result = new int[arr.length + arr2.length];
-        // Копируем элементы до позиции вставки
-        for (int i = 0; i < pos; i++) {
-            result[i] = arr[i];
-        }
-        // Вставляем элементы из массива arr2
-        for (int i = 0; i < arr2.length; i++) {
-            result[pos + i] = arr2[i];
-        }
-        // Копируем оставшиеся элементы из arr
-        for (int i = pos; i < arr.length; i++) {
-            result[arr2.length + i] = arr[i];
-        }
-        // Вывод результата
-        System.out.print("Результат: ");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
-        }
-        return result;
-    }
-
-    public static int[] reverseBack(){//Задание 19
-        Scanner scanner = new Scanner(System.in);
-        // Ввод размера массива
-        System.out.print("Введите размер массива (вывод реверс): ");
-        int size = scanner.nextInt();
-        if (size <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return new int[]{-1};
-        }
-        // Создание массива
-        int[] arr = new int[size];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr[i] = scanner.nextInt();
-        }
-        // Создаем реверсивный массив такого же размера
-        int[] result = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            result[i] = arr[arr.length - 1 - i];
-        }
-        // Вывод результата
-        System.out.print("Результат: ");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
-        }
-        return result;
-
-    }
-
-    public static int[] findAll(){//
-        Scanner scanner = new Scanner(System.in);
-        // Ввод размера массива
-        System.out.print("Введите размер массива ( поиск индексов вхождений): ");
-        int size = scanner.nextInt();
-        if (size <= 0){
-            System.out.println("Ощибка, число должно быть положительным");
-            return new int[]{-1};
-        }
-        // Создание массива
-        int[] arr = new int[size];
-        // Ввод элементов массива
-        System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            System.out.print("Элемент " + (i + 1) + ": ");
-            arr[i] = scanner.nextInt();
-        }
-        // Ввод искомого числа
-        System.out.print("Введите искомое число: ");
-        int x = scanner.nextInt();
-        // Сначала посчитаем количество вхождений
-        int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-                count++;
-            }
-        }
-        // Создаем массив нужного размера
-        int[] result = new int[count];
-        // Заполняем массив индексами
-        int index = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-                result[index] = i;
-                index++;
-            }
-        }
-        // Вывод результата
-        System.out.print("Индексы вхождений искомого числа: ");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
-        }
-        return result;
-    }
-
     public static void main(String[] args) {
-        Scanner mainScanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        Methods methods = new Methods();
 
-        System.out.print("Выберите задание (Методы(1-5), Условия(6-10), Циклы(11-15), Массивы(16-20)):");
-
-
-        int choice = mainScanner.nextInt();
+        System.out.print("Выберите задание (1-20): ");
+        int choice = scanner.nextInt();
 
         switch(choice) {
             case 1:
-                fraction(0);
+                // Задание 1: Дробная часть числа
+                System.out.println("Введите x: ");
+                double number1 = scanner.nextDouble();
+                double result1 = methods.fraction(number1);
+                System.out.println("Дробная часть х: " + result1);
                 break;
+
             case 2:
-                charToNum();
+                // Задание 2: Преобразование символа в число
+                System.out.print("Введите символ цифры (0-9): ");
+                char inputChar = scanner.next().charAt(0);
+                int result2 = methods.charToNum(inputChar);
+                if (result2 != -1) {
+                    System.out.println("Символ '" + inputChar + "' преобразован в число: " + result2);
+                }
                 break;
+
             case 3:
-                is2Digits();
+                // Задание 3: Проверка на двузначное число
+                System.out.println("Введите двузначное число: ");
+                int number3 = scanner.nextInt();
+                boolean result3 = methods.is2Digits(number3);
+                System.out.println("Результат: " + result3);
                 break;
+
             case 4:
-                isInRange();
+                // Задание 4: Проверка числа в диапазоне
+                System.out.println("Введите нижнюю границу диапазона: ");
+                int a = scanner.nextInt();
+                System.out.println("Введите верхнюю границу диапазона: ");
+                int b = scanner.nextInt();
+                System.out.println("Введите число в диапазоне: ");
+                int num = scanner.nextInt();
+                boolean result4 = methods.isInRange(a, b, num);
+                System.out.println("Результат: " + result4);
                 break;
+
             case 5:
-                isEqua();
+                // Задание 5: Проверка на равенство трех чисел
+                System.out.println("Равные числа. Введите первое число: ");
+                int a5 = scanner.nextInt();
+                System.out.println("Введите второе число: ");
+                int b5 = scanner.nextInt();
+                System.out.println("Введите третье число: ");
+                int c5 = scanner.nextInt();
+                boolean result5 = methods.isEqua(a5, b5, c5);
+                System.out.println("Результат: " + result5);
                 break;
+
             case 6:
-                abs();
+                // Задание 6: Модуль числа
+                System.out.println("Введите число(вывод положительного): ");
+                int x6 = scanner.nextInt();
+                int result6 = methods.abs(x6);
+                System.out.println("Модуль числа: " + result6);
                 break;
+
             case 7:
-                is35();
+                // Задание 7: Деление на 3 или 5, но не на оба
+                System.out.println("Введите число(деление нацело на 3 и 5): ");
+                int x7 = scanner.nextInt();
+                boolean result7 = methods.is35(x7);
+                System.out.println("Результат: " + result7);
                 break;
+
             case 8:
-                max3();
+                // Задание 8: Максимум из трех чисел
+                System.out.println("Введите первое число из трех(поиск максимального): ");
+                int x8 = scanner.nextInt();
+                System.out.println("Введите второе число: ");
+                int y8 = scanner.nextInt();
+                System.out.println("Введите третье число: ");
+                int z8 = scanner.nextInt();
+                int result8 = methods.max3(x8, y8, z8);
+                System.out.println("Максимальное число: " + result8);
                 break;
+
             case 9:
-                sum2();
+                // Задание 9: Сумма двух чисел с особым условием
+                System.out.println("Введите число(сумма двух чисел((10>=x<=20)==20): ");
+                int x9 = scanner.nextInt();
+                System.out.println("Введите второе число: ");
+                int y9 = scanner.nextInt();
+                int result9 = methods.sum2(x9, y9);
+                System.out.println("Сумма чисел: " + result9);
                 break;
+
             case 10:
-                day();
+                // Задание 10: День недели
+                System.out.println("Введите число от 1 до 7(дни недели): ");
+                int x10 = scanner.nextInt();
+                String result10 = methods.day(x10);
+                System.out.println("Результат: " + result10);
                 break;
+
             case 11:
-                listNums();
+                // Задание 11: Вывод чисел от 0 до x
+                System.out.println("Введите число(вывод от 0 до х): ");
+                int x11 = scanner.nextInt();
+                String result11 =methods.listNums(x11);
+                if (!result11.equals("-1")) {
+                    System.out.println("Результат: " + result11);
+                }
                 break;
+
             case 12:
-                chet();
+                // Задание 12: Вывод четных чисел от 0 до x
+                System.out.println("Введите число(вывод от 0 до х только четных): ");
+                int x12 = scanner.nextInt();
+                String result12 = methods.chet(x12);
+                if (!result12.equals("-1")) {
+                    System.out.println("Результат: " + result12);
+                }
                 break;
+
             case 13:
-                numLen();
+                // Задание 13: Количество цифр в числе
+                System.out.println("Введите число(вывод количества знаков в числе): ");
+                long x13 = scanner.nextLong();
+                int result13 = methods.numLen(x13);
+                if (result13 != -1) {
+                    System.out.println("Результат: " + result13);
+                }
                 break;
+
             case 14:
-                square();
+                // Задание 14: Квадрат из звездочек
+                System.out.println("Введите число(построение квадрата x*x): ");
+                int x14 = scanner.nextInt();
+                methods.square(x14);
                 break;
+
             case 15:
-                rightTriangle();
+                // Задание 15: Правый треугольник из звездочек
+                System.out.println("Введите число(построение правого треугольника): ");
+                int x15 = scanner.nextInt();
+                methods.rightTriangle(x15);
                 break;
+
             case 16:
-                findFirst();
+                // Задание 16: Поиск первого вхождения в массиве
+                System.out.print("Введите размер массива: ");
+                int size16 = scanner.nextInt();
+                if (size16 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr16 = new int[size16];
+                System.out.println("Введите элементы массива:");
+                for (int i = 0; i < size16; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr16[i] = scanner.nextInt();
+                }
+                System.out.print("Введите число для поиска: ");
+                int x16 = scanner.nextInt();
+                int result16 = methods.findFirst(arr16, x16);
+                if (result16 != -1) {
+                    System.out.println("Индекс первого вхождения: " + result16);
+                } else {
+                    System.out.println("Число не найдено в массиве");
+                }
                 break;
+
             case 17:
-                maxAbs();
+                // Задание 17: Максимальное значение по модулю в массиве
+                System.out.print("Введите размер массива: ");
+                int size17 = scanner.nextInt();
+                if (size17 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr17 = new int[size17];
+                System.out.println("Введите элементы массива:");
+                for (int i = 0; i < size17; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr17[i] = scanner.nextInt();
+                }
+                int result17 = methods.maxAbs(arr17);
+                System.out.println("Максимальное значение по модулю: " + result17);
                 break;
+
             case 18:
-                add();
+                // Задание 18: Вставка одного массива в другой
+                System.out.print("Введите размер первого массива: ");
+                int size18_1 = scanner.nextInt();
+                if (size18_1 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr18_1 = new int[size18_1];
+                System.out.println("Введите элементы первого массива:");
+                for (int i = 0; i < size18_1; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr18_1[i] = scanner.nextInt();
+                }
+
+                System.out.print("Введите размер второго массива: ");
+                int size18_2 = scanner.nextInt();
+                if (size18_2 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr18_2 = new int[size18_2];
+                System.out.println("Введите элементы второго массива:");
+                for (int i = 0; i < size18_2; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr18_2[i] = scanner.nextInt();
+                }
+
+                System.out.println("Введите индекс с которого второй массив вставят в первый");
+                int pos18 = scanner.nextInt();
+                int[] result18 = methods.add(arr18_1, arr18_2, pos18);
+                System.out.print("Результат: ");
+                for (int i = 0; i < result18.length; i++) {
+                    System.out.print(result18[i] + " ");
+                }
+                System.out.println();
                 break;
+
             case 19:
-                reverseBack();
+                // Задание 19: Реверс массива
+                System.out.print("Введите размер массива (вывод реверс): ");
+                int size19 = scanner.nextInt();
+                if (size19 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr19 = new int[size19];
+                System.out.println("Введите элементы массива:");
+                for (int i = 0; i < size19; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr19[i] = scanner.nextInt();
+                }
+                int[] result19 = methods.reverseBack(arr19);
+                System.out.print("Результат: ");
+                for (int i = 0; i < result19.length; i++) {
+                    System.out.print(result19[i] + " ");
+                }
+                System.out.println();
                 break;
+
             case 20:
-                findAll();
+                // Задание 20: Поиск всех вхождений в массиве
+                System.out.print("Введите размер массива (поиск индексов вхождений): ");
+                int size20 = scanner.nextInt();
+                if (size20 <= 0) {
+                    System.out.println("Ошибка, число должно быть положительным");
+                    break;
+                }
+                int[] arr20 = new int[size20];
+                System.out.println("Введите элементы массива:");
+                for (int i = 0; i < size20; i++) {
+                    System.out.print("Элемент " + (i + 1) + ": ");
+                    arr20[i] = scanner.nextInt();
+                }
+                System.out.print("Введите искомое число: ");
+                int x20 = scanner.nextInt();
+                int[] result20 = methods.findAll(arr20, x20);
+                System.out.print("Индексы вхождений искомого числа: ");
+                for (int i = 0; i < result20.length; i++) {
+                    System.out.print(result20[i] + " ");
+                }
+                System.out.println();
                 break;
+
             default:
                 System.out.println("Ошибка: выберите задание с 1 по 20!");
         }
 
+        scanner.close();
     }
-
 }
